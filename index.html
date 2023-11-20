@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Agrega el enlace a FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    /* Tu estilo actual permanece igual */
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .fullscreen-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #fullscreen-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1; /* Establece un índice z negativo para colocar la imagen detrás del contenido */
+    }
+
+      /* Estilo específico para la barra superior */
+      .top-bar {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 50px; /* Ajusta la altura según tus necesidades */
+       background: rgba(30, 30, 30, 0.8); /* Fondo semi transparente, tono gris oscuro */
+       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); /* Agrega sombra */
+       z-index: 1; /* Asegura que la barra esté por encima de la imagen */
+    }
+
+    .menu-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      background: none; /* Elimina el fondo */
+      z-index: 2; /* Asegura que el menú esté por encima de la imagen y la barra */
+    }
+
+    /* Estilo específico para los enlaces del menú */
+    .menu-link {
+      color: white; /* Color blanco para los enlaces */
+      text-decoration: none;
+      margin-right: 20px; /* Aumenta la separación entre los enlaces */
+    }
+
+    .social-icons {
+      position: absolute;
+      bottom: 10px;
+      left: 50px;
+      font-size: 24px;
+      z-index: 2; /* Asegura que los iconos de redes sociales estén por encima de la imagen y la barra */
+    }
+      /* Estilo específico para los iconos sociales */
+      .social-icons a {
+       color: #0C7FF9; /* Puedes ajustar el color grisáceo cambiando el valor hexadecimal o usando nombres de colores */
+    }
+
+    .brand-container {
+      position: absolute;
+      top: 15px;
+      left: 50px;
+      color: white;
+      font-size: 20px;
+      z-index: 2; /* Asegura que el texto del contenedor de marca esté por encima de la imagen y la barra */
+    }
+
+    .brand-container-a p {
+      visibility: hidden; /* Para ocultar solo el texto del párrafo */
+    }
+
+    /* Agrega estilos para el botón de reproducción */
+    #playButton {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: transparent;
+      border: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      z-index: 2; /* Asegura que el botón esté por encima de la imagen y la barra */
+    }
+
+    /* Agrega estilos para el texto que se mostrará al hacer clic en el audio */
+    #hiddenText {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.5s ease; /* Agrega una transición suave para el cambio de opacidad */
+      z-index: 2; /* Asegura que el texto esté por encima de la imagen y la barra */
+    }
+  </style>
+  <title>Imagen Pantalla Completa</title>
+</head>
+
+<body>
+  <div class="fullscreen-container">
+    <!-- Agrega la barra superior -->
+    <div class="top-bar"></div>
+
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQnGDM8AIg0P9DeqL9SseO6i8pmDQHuufj6PpEy7-zeIo5OLQk8iMS975-pPhlmnX8zVFVL-hrxWPUPe311R_Omh_9iMkqDXimuBQ4CalicHkoYGFwBBmBlZMGuzpKVgRjM9toSl325Ycj2CBM-JJCFRbM2G-vve5GYARwpcFC3qhuIiBypJMQ-kqfs9g/s16000/limpiezas_en_menorca_grupo_pons.jpg" alt="Imagen" id="fullscreen-image">
+
+    <!-- Agrega la etiqueta de audio para reproducir el archivo automáticamente -->
+    <audio id="audio" preload="auto">
+      <source src="limpiezas.mp3" type="audio/mp3">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Agrega el botón de reproducción -->
+    <button id="playButton" onclick="playAudio()">&#9654;  E n t r a r</button>
+
+    <!-- Agrega el texto oculto que se mostrará al hacer clic en el audio -->
+    <div id="hiddenText">Nuestra plataforma on line, de Alquileres Propiedades en Menorca..</div>
+    <div id="hiddenText">és un servicio totalmente gratuito de clasificados en línea, para alquilar libremente, tu propiedad, de tu a tu.</div>
+    <div id="hiddenText">y mañana sera de otro color</div>
+
+    <div class="menu-container">
+      <a href="https://multic3454353.blogspot.com/?zx=a8048eed39b97657" class="menu-link">Salir</a>
+      <a href="https://multic3454353.blogspot.com/?zx=a8048eed39b97657" class="menu-link">Contacta</a>
+    </div>
+
+    <!-- Agrega los iconos de redes sociales con enlaces (ejemplo usando FontAwesome) -->
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank" class="fab fa-facebook"></a>
+      <a href="https://www.youtube.com/channel/UCBLCxWW346jx5pTuKIaiuRg?sub_confirmation=1" target="_blank"
+        class="fab fa-youtube" style="margin-left: 10px;"></a>
+    </div>
+
+    <div class="brand-container">
+      Servicios Limpiezas
+    </div>
+    <div class="brand-container-a">
+      <p>AQUI PONER TODOS LOS METATAC Y DESCRIPCION DE LA PAGINA</p>
+    </div>
+
+    <!-- Agrega un script para controlar la reproducción del audio y mostrar el texto -->
+<script>
+  var hiddenTexts = [
+    "Grupo Pons Menorca, Socio Cooperativa de Servicios a la Comunidad Balear, le ofrece a todos Nuestros Clientes una amplia gama de servicios y profesionales.",
+    "profesionales acreditados y dispuestos a ofrecerle el mejor servicios a los mejores precios.Por qué Nuestros Precios son Competitivos en el Mercado del Sector Servicios?",
+    "Simplemente, por que pensamos que nó está reñida nuestra profesionalidad y eficacia con Nuestros precios, y derivado a ello Nuestros Clientes. Nos avalan tras años de experiencia",
+    "y confianza depositada en Nuestros Departamentos.Olvídese del antes y del después en cada servicio. Despreocúpese, por que le ofrecemos todos los servicios necesarios para rentabilizar",
+    "su propiedad y economizar, y todo ello en una sola empresa, Grupo Pons Menorca. Nuestros Servicios Limpiezas en Menorca.*- Servicios Limpiezas a Particulares y Empresas",
+    "*- Servicios Limpiezas  Apertura y Primeras Limpiezas *- Servicio Limpiezas Cambios Vacacionales *- Servicio Lavandería con entrega y recogida *- Servicios Guarda y custodia llaves",
+    "propiedades con entrega y recogida *- Servicios Limpiezas Comunidades Vecinos *- Servicio Limpieza y Mantenimiento Cristales. Nuestros Departamentos les Garantizan un Servicio Profesional",
+    "Serio, Responsable y ajustado a Todas sus necesidades y en cada Circunstancia. Infórmarte, Contacta, y nos Ajustaremos en toda circunstancias a tus Necesidades. Gracias por tu visita. La direccion"
+  ];
+
+  var currentIndex = 0;
+
+  function showNextText() {
+    var hiddenTextElement = document.getElementById('hiddenText');
+    
+    if (currentIndex < hiddenTexts.length) {
+      hiddenTextElement.innerHTML = hiddenTexts[currentIndex];
+      hiddenTextElement.style.opacity = '1';
+
+      currentIndex++;
+
+      setTimeout(function () {
+        hiddenTextElement.style.opacity = '0';
+        setTimeout(showNextText, 1000); // Mostrar el próximo texto después de 3 segundos
+      }, 12000);
+    } else {
+      // Detener el proceso porque hemos llegado al final de los textos
+      currentIndex = 0; // Reiniciar el índice si deseas que vuelva a mostrar desde el principio
+    }
+  }
+
+  function playAudio() {
+    var audio = document.getElementById('audio');
+    audio.play();
+    document.getElementById('playButton').style.display = 'none';
+    showNextText(); // Inicia el proceso para mostrar los textos gradualmente
+  }
+</script>
+
+  </div>
+</body>
+
+</html>
